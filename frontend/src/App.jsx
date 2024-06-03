@@ -5,6 +5,7 @@ import { Footer } from './components/Footer/Footer';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { Add } from './Pages/Home/Add';
 import { List } from './Pages/List/List';
+import 'notyf/notyf.min.css';
 
 function App() {
 

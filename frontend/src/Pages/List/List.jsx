@@ -12,7 +12,7 @@ export const List = () => {
                 <Link className="btn btn-primary" to="/"> Add User</Link>
             </div>
             <table className="table table-bordered">
-                <thead class="table-secondary">
+                <thead className="table-secondary">
                     <tr>
                         <th scope="col">Sr No</th>
                         <th scope="col">First</th>

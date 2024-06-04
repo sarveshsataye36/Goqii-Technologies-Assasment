@@ -63,8 +63,11 @@ export const List = () => {
                         <Link to={`/edit-user/${list.id}`} className="btn btn-primary me-2">
                             <MdOutlineModeEdit />
                         </Link>
+
+                        <button className="btn btn-danger me-2">
+                            <MdDelete onClick={e  => deleteUser(list.id)} />
+                        </button>
                         
-                        <MdDelete onClick={e  => deleteUser(list.id)} />
                         </td>
                     </tr>
                     ))

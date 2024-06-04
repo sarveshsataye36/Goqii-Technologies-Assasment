@@ -37,6 +37,39 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Get a single user.
+     */
+    public function show(String $userId)
+    {
+        try
+        {   
+            // Find the user by ID
+            $user = User::find($userId);
+
+            if($user){
+
+                // created data send to back to user
+                $data = [
+                    'user' => $user
+                ];
+
+                // return response to back to user
+                return $this->success(true, $data, 'User retrive successfully', 200);
+            }else{
+
+                // return response to back to user
+                return $this->fails(false, 'User not fount', 404);
+            }
+
+            
+
+        }catch(\Throwable $e)
+        {
+            return $this->fails(false,$e->getMessage(), 500);
+        }
+    }
+
 
     /**
      * Create new user and save it into database
@@ -76,7 +109,7 @@ class UserController extends Controller
         try
         {   
             // Find the user by ID
-            $user = User::findOrFail($userId);
+            $user = User::find($userId);
 
             if($user){
 
@@ -94,6 +127,42 @@ class UserController extends Controller
 
                 // return response to back to user
                 return $this->fails(false, 'User not found', 404);
+            }
+
+            
+
+        }catch(\Throwable $e)
+        {
+            return $this->fails(false,$e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Delete the specified user from Database.
+     */
+    public function destroy(string $userId)
+    {
+        try
+        {   
+            // Find the user by ID
+            $user = User::find($userId);
+
+            if($user){
+
+                // update user
+                $user->delete();
+
+                // created data send to server
+                $data = [
+                    'user' => $user,
+                ];
+
+                // return response to back to user
+                return $this->success(true, $data, 'User delete successfully', 200);
+            }else{
+
+                // return response to back to user
+                return $this->fails(false, 'User not fount', 404);
             }
 
             

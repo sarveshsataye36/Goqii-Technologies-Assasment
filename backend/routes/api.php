@@ -11,3 +11,7 @@ Route::post('/user/new', [UserController::class,'store'])->name('user.store');
 Route::get('/user', [UserController::class,'index'])->name('user.index');
 // Setup route for update single user
 Route::put('/user/update/{id}', [UserController::class,'update'])->name('user.update');
+// Delete Route for user setup
+Route::delete('/user/delete/{id}', [UserController::class,'destroy'])->name('user.delete');
+// Get Single user
+Route::get('/user/{id}', [UserController::class,'show'])->name('user.edit'); 

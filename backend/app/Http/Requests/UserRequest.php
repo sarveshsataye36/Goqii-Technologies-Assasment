@@ -9,7 +9,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 
 class UserRequest extends FormRequest
 {
-    
+
     use HttpResponses;
 
     /**
@@ -43,7 +43,7 @@ class UserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'First name is required',
+            'name.required' => 'Name is required',
             'email.required' => 'EmailID is required',
             'password.required' => 'Password is required',
             'DOB.required' => 'Date of birth is required'

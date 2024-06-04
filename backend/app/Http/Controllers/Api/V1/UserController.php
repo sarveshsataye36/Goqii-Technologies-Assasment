@@ -14,6 +14,31 @@ class UserController extends Controller
     use HttpResponses;
 
     /**
+     * Display a listing of the user.
+     */
+    public function index()
+    {
+        try
+        {   
+            // get all user
+            $users = User::get();
+
+            // created data send to back to api
+            $data = [
+                'user' => $users
+            ];
+
+            // return response to back to user
+            return $this->success(true, $data, 'User retrive successfully', 200);
+
+        }catch(\Throwable $e)
+        {
+            return $this->fails(false,$e->getMessage(), 500);
+        }
+    }
+
+
+    /**
      * Create new user and save it into database
      */
     public function store(UserRequest $request)
@@ -40,6 +65,42 @@ class UserController extends Controller
         {   
             // fail to complete request
             return $this->fails(false, $e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Update the specified user from database.
+     */
+    public function update(UserRequest $request,string $userId)
+    {
+        try
+        {   
+            // Find the user by ID
+            $user = User::findOrFail($userId);
+
+            if($user){
+
+                // update user
+                $user->update($request->all());
+
+                // created data send to server
+                $data = [
+                    'user' => $user,
+                ];
+
+                // return response to back to user
+                return $this->success(true, $data, 'User update successfully', 200);
+            }else{
+
+                // return response to back to user
+                return $this->fails(false, 'User not found', 404);
+            }
+
+            
+
+        }catch(\Throwable $e)
+        {
+            return $this->fails(false,$e->getMessage(), 500);
         }
     }
 }

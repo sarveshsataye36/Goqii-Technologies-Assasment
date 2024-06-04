@@ -12,7 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Setup Up model $fillable field that need to be insert in database
      *
      * @var array<int, string>
      */
@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'DOB'
     ];
 
     /**

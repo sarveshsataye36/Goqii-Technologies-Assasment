@@ -8,9 +8,8 @@ import { MdOutlineModeEdit, MdDelete } from "react-icons/md";
 export const List = () => {
 
         const [lists, setLists] = useState([]);
-      
-        useEffect(() => {
-          const getAllUser = async () => {
+
+        const getAllUser = async () => {
             try {
               const response = await axios.get('http://127.0.0.1:8000/api/user/');
               setLists(response.data.data.user);
@@ -19,6 +18,10 @@ export const List = () => {
               setLists([]);
             }
           };
+
+
+        useEffect(() => {
+          
       
           getAllUser();
         }, []);
@@ -27,6 +30,7 @@ export const List = () => {
             try {
                 await axios.delete(`http://127.0.0.1:8000/api/user/delete/${id}`);
                 Notify.success('User deleted sucessfully');
+                getAllUser(); 
               } catch (error) {
                 Notify.error('Unable to Delete User');
               }

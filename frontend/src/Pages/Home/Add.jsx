@@ -2,6 +2,7 @@ import React from 'react'
 import Notify from '../../components/Notify/Notify';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 export const Add = () => {
 
@@ -10,7 +11,7 @@ export const Add = () => {
       name: '',
       email: '',
       password: '',
-      dateOfBirth: ''
+      DOB: ''
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -22,13 +23,19 @@ export const Add = () => {
       password: Yup.string()
         .min(8, 'Password must be at least 8 characters')
         .required('Required'),
-      dateOfBirth: Yup.date()
+      DOB: Yup.date()
         .required('Required')
     }),
-    onSubmit: values => {
-      // alert(JSON.stringify(values, null, 2));
-      Notify.success('User Added Successfully');
-    }
+    onSubmit: async (values) => {
+      try {
+        await axios.post('http://127.0.0.1:8000/api/user/new', values);
+        // Handle successful submission
+        Notify.success('User Added Successfully');
+      } catch (error) {
+        // Handle error
+        Notify.error('User Not Added');
+      }
+    },
   });
 
   return (
@@ -93,19 +100,19 @@ export const Add = () => {
           </div>
 
           <div className="mb-3 col-lg-4">
-            <label htmlFor="dateOfBirth" className="form-label">Date Of Birth</label>
+            <label htmlFor="DOB" className="form-label">Date Of Birth</label>
             <input
               type='date'
-              className={`form-control ${formik.touched.dateOfBirth && formik.errors.dateOfBirth ? 'is-invalid' : ''}`}
-              id="dateOfBirth"
-              aria-describedby="dateOfBirth"
-              name='dateOfBirth'
-              value={formik.values.dateOfBirth}
+              className={`form-control ${formik.touched.DOB && formik.errors.DOB ? 'is-invalid' : ''}`}
+              id="DOB"
+              aria-describedby="DOB"
+              name='DOB'
+              value={formik.values.DOB}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
-            {formik.touched.dateOfBirth && formik.errors.dateOfBirth ? (
-              <div className="invalid-feedback">{formik.errors.dateOfBirth}</div>
+            {formik.touched.DOB && formik.errors.DOB ? (
+              <div className="invalid-feedback">{formik.errors.DOB}</div>
             ) : null}
           </div>
 

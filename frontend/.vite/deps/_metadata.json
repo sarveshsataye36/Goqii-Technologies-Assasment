@@ -1,0 +1,61 @@
+{
+  "hash": "8875f5d3",
+  "configHash": "22004fa5",
+  "lockfileHash": "26fcf09b",
+  "browserHash": "ee09e211",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "641ddca0",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "b4f78291",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "f3f92eed",
+      "needsInterop": false
+    },
+    "react-icons/md": {
+      "src": "../../node_modules/react-icons/md/index.mjs",
+      "file": "react-icons_md.js",
+      "fileHash": "322e4e52",
+      "needsInterop": false
+    },
+    "formik": {
+      "src": "../../node_modules/formik/dist/formik.esm.js",
+      "file": "formik.js",
+      "fileHash": "d7002e3d",
+      "needsInterop": false
+    },
+    "yup": {
+      "src": "../../node_modules/yup/index.esm.js",
+      "file": "yup.js",
+      "fileHash": "177efd49",
+      "needsInterop": false
+    },
+    "notyf": {
+      "src": "../../node_modules/notyf/notyf.es.js",
+      "file": "notyf.js",
+      "fileHash": "70827693",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-DYIYK56Z": {
+      "file": "chunk-DYIYK56Z.js"
+    },
+    "chunk-QY3QVPNU": {
+      "file": "chunk-QY3QVPNU.js"
+    },
+    "chunk-LQ2VYIYD": {
+      "file": "chunk-LQ2VYIYD.js"
+    }
+  }
+}

@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class UserRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
 
     use HttpResponses;
@@ -26,10 +26,13 @@ class UserRequest extends FormRequest
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
-    {
+    {   
+        // Get the user ID from the request
+        $userId = $this->input('user_id');
+
         return [
             'name'=>'required',
-            'email'=> 'required|email|unique:users,email',
+            'email'=> 'required|email|unique:users,email,' . $userId,
             'password'=>'required',
             'DOB'=>'required',
         ];
@@ -50,10 +53,11 @@ class UserRequest extends FormRequest
         ];
     }
 
-    /** If Validation fail throw error
-    *
-    * @return array<string, string>
-    */
+     /**
+     * If Validation fail return error Message
+     *
+     * @return array<string, string>
+     */
     protected function failedValidation(Validator $validator)
     {
         $errors = $validator->errors();

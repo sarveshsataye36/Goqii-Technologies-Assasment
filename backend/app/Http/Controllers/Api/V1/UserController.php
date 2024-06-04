@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\HttpResponses;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\{UserRequest, UpdateUserRequest};
 use App\Models\User;
 use Exceptions;
 
@@ -104,7 +104,7 @@ class UserController extends Controller
     /**
      * Update the specified user from database.
      */
-    public function update(UserRequest $request,string $userId)
+    public function update(UpdateUserRequest $request,string $userId)
     {
         try
         {   
@@ -149,7 +149,7 @@ class UserController extends Controller
 
             if($user){
 
-                // update user
+                // delete user
                 $user->delete();
 
                 // created data send to server

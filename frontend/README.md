@@ -13,7 +13,7 @@ Clone the repository:
 Go To Backend Folder
 
 ```bash
-  cnpm run dev
+  npm run dev
 ```
 This will activate recact server.
 
